@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DNS Lookup Tool</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="icon">🌐</div>
+
+      <h1>DNS Lookup Tool</h1>
+
+      <p class="subtitle">Discover the IPv4 address of any domain</p>
+
+      <form method="POST">
+        <label for="domain">Enter Domain Name</label>
+
+        <input
+          type="text"
+          id="domain"
+          name="domain"
+          placeholder="e.g. google.com"
+          value="{{ domain }}"
+          required
+        />
+
+        <button type="submit">🔍 Find IP Address</button>
+      </form>
+
+      {% if ip %}
+      <div class="result">
+        <p>Lookup Successful</p>
+        <h3>{{ domain }}</h3>
+        <div class="ip">{{ ip }}</div>
+        <span>IPv4 Address</span>
+      </div>
+      {% endif %} {% if error %}
+      <div class="error">{{ error }}</div>
+      {% endif %}
+
+      <footer>DNS Lookup Tool | CSE Project</footer>
+    </div>
+  </body>
+</html>
